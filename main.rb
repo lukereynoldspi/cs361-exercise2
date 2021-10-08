@@ -2,34 +2,28 @@
 
 @name = "Johanna Jackson"
 
-# Mangle the name by reversing it or borgifying it
-def modified_name(choose)
-  # Split the name into first and last in an array
+# Mangle the name by reversing it
+def reverse_name
   split_name = @name.split
-  #reversed_twice = split_name.reverse.reverse
-  #mangled_name = reversed_twice << "Mangled"
-  #return mangled_name * 2
+
   # Reverse the array of name components so the array is [last, first]
-  reversed_name_components = split_name.reverse
+  reversed_split_name = split_name.reverse
+
   # Rejoin the array of name components
-  new_name1 = reversed_name_components.join(' ')
-  # Store the mangled name
-  @name = new_name1
-  puts new_name1
-  if choose
-    # Split the name into last and first in an array
-    split_name2 = new_name1.split
-    # Reverse the array of name components so the array is [last, first]
-    reversed_name_components2 = split_name2.reverse
-    # Add borg to the end of the array
-    reversed_name_components2 << "Borg"
-    # Rejoin the array of name components
-    new_name2 = reversed_name_components2.join(' ')
-    puts new_name2
-    @name = new_name2
-  end
-  return @name
+  reversed_name = reversed_split_name.join(' ')
+  return reversed_name
 end
 
-puts "New name: #{modified_name(false)}"
-puts "New borg name: #{modified_name(true)}"
+# Mangle the name by borgifying it
+def borgify_name
+
+  # Reverses name using the reverse_borg function before borgifying it
+  reversed_name = reverse_name
+
+  # Add borg to the end of the string
+  borgified_name = reversed_name + " Borg"
+  return borgified_name
+end
+puts "Original name: #{@name}"
+puts "New name: #{reverse_name}"
+puts "New borg name: #{borgify_name}"
